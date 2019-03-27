@@ -1,7 +1,9 @@
 # Mac & Cheese
 
-### Mac address changer
+## Mac address changer
 
-* Linux
-* MacOS
-* Windows
+### Compatible OS
+
+- [x] Linux
+- [x] MacOS
+- [ ] Windows

@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 
 import subprocess
+from pyfiglet import Figlet
+
+custom_font = Figlet(font='doom')
+
+print(custom_font.renderText("Mac & Cheese"))
 
 subprocess.call("ifconfig eth0 down", shell=True)
 print("Bringing network eth0 down")

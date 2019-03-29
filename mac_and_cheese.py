@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/local/bin/env python3
 
 import subprocess
 import random
@@ -21,10 +21,10 @@ interface = "en6"
 new_mac = rand_mac()
 
 print(custom_font.renderText("Mac & Cheese"))
-print("[+] Changing MAC address for " + interface)
+print(f'[+] Changing MAC address for {interface}')
 # subprocess.call("sudo ifconfig en7 down", shell=True)
 # print("Bringing network en7 down")
-subprocess.call("sudo ifconfig " + interface + " ether " + new_mac, shell=True)
-print("[+] Assigning MAC address: " + new_mac)
-subprocess.call("sudo ifconfig " + interface + " up", shell=True)
-print("[+] Bringing network " + interface + " up")
+subprocess.call(f'sudo ifconfig {interface} ether {new_mac}', shell=True)
+print(f'[+] Assigning MAC address: {new_mac}')
+subprocess.call(f'sudo ifconfig {interface} up', shell=True)
+print(f'[+] Bringing network {interface} up')

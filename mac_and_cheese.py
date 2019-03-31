@@ -2,7 +2,10 @@
 
 import subprocess
 import random
+from optparse import OptionParser
 from pyfiglet import Figlet
+
+parser = OptionParser()
 
 
 def rand_mac():
@@ -17,14 +20,14 @@ def rand_mac():
 
 
 custom_font = Figlet(font='doom')
-interface = "en6"
-new_mac = rand_mac()
-
 print(custom_font.renderText("Mac & Cheese"))
+
+new_mac = rand_mac()
+interface = input("Enter interface you wish to change > ")
 print(f'[+] Changing MAC address for {interface}')
-# subprocess.call("sudo ifconfig en7 down", shell=True)
-# print("Bringing network en7 down")
-subprocess.call(f'sudo ifconfig {interface} ether {new_mac}', shell=True)
+# subprocess.call(["sudo", "ifconfig", interface, "down"])
+# print(f'[+] Bringing network {interface} down')
+subprocess.call(["sudo", "ifconfig", interface, "ether", new_mac])
 print(f'[+] Assigning MAC address: {new_mac}')
-subprocess.call(f'sudo ifconfig {interface} up', shell=True)
+subprocess.call(["sudo", "ifconfig", interface, "up"])
 print(f'[+] Bringing network {interface} up')

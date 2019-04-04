@@ -33,6 +33,16 @@ def darwin(face, mac):
     print(f'[+] Bringing network {face} up')
 
 
+def linux(face, mac):
+    print(f'[+] Bringing network {face} down')
+    subprocess.call(["sudo", "ifconfig", face, "down"])
+    subprocess.call(["sudo", "ifconfig", face, "ether", mac])
+    subprocess.call(["sudo", "ifconfig", face, "up"])
+    print(f'[+] Changing MAC address for {face}')
+    print(f'[+] Assigning MAC address: {mac}')
+    print(f'[+] Bringing network {face} up')
+
+
 interface = args.interface
 new_mac = args.new_mac
 if new_mac is None:
@@ -42,18 +52,8 @@ if new_mac is None:
 if sys.platform.startswith('darwin'):
     darwin(interface, new_mac)
 elif sys.platform.startswith('linux'):
-    # TODO: linux code
+    linux(interface, new_mac)
     pass
 elif sys.platform.startswith('win32'):
     # TODO: Windows code
     pass
-
-# new_mac = rand_mac()
-# interface = input("Enter interface you wish to change > ")
-# print(f'[+] Changing MAC address for {interface}')
-# subprocess.call(["sudo", "ifconfig", interface, "down"])
-# print(f'[+] Bringing network {interface} down')
-# subprocess.call(["sudo", "ifconfig", interface, "ether", new_mac])
-# print(f'[+] Assigning MAC address: {new_mac}')
-# subprocess.call(["sudo", "ifconfig", interface, "up"])
-# print(f'[+] Bringing network {interface} up')

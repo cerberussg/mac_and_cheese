@@ -3,12 +3,13 @@
 import subprocess
 import random
 import sys
+import re
 from argparse import ArgumentParser
 from pyfiglet import Figlet
 
 
 def arguments():
-    parser = ArgumentParser(description='MAC spoofer written in Python 3')
+    parser = ArgumentParser(description='MAC spoofer written in Python 3. Must have Admin access or Sudo capability')
     parser.add_argument('-i', '--interface', dest='interface',
                         help='Interface adapter name to change MAC address: (ex. eth0, en1)')
     parser.add_argument('-m', '--mac', dest='new_mac',
@@ -52,6 +53,16 @@ def linux(face, mac):
     print(f'[+] Bringing network {face} up')
 
 
+def change_success(face, mac):
+    ether = subprocess.run(["ifconfig", face, "ether"], stdout=subprocess.PIPE)
+    ether = ether.stdout.decode('utf-8')
+    eth = re.search('(?:[0-9a-fA-F]:?){12}', ether)
+    if eth.group(0) == mac:
+        print('[+] MAC address successfully changed.')
+    else:
+        print('[-] MAC address could not be changed successfully')
+
+
 custom_font = Figlet(font='doom')
 print(custom_font.renderText("Mac & Cheese"))
 
@@ -59,6 +70,7 @@ arguments = arguments()
 
 if sys.platform.startswith('darwin'):
     darwin(arguments.interface, arguments.new_mac)
+    change_success(arguments.interface, arguments.new_mac)
 elif sys.platform.startswith('linux'):
     linux(arguments.interface, arguments.new_mac)
 elif sys.platform.startswith('win32'):

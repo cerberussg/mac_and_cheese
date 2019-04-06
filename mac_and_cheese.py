@@ -10,12 +10,14 @@ from pyfiglet import Figlet
 def arguments():
     parser = ArgumentParser(description='MAC spoofer written in Python 3')
     parser.add_argument('-i', '--interface', dest='interface',
-                        help='Interface adapter name to change MAC address on. Example: en9 or eth0.')
+                        help='Interface adapter name to change MAC address: (ex. eth0, en1)')
     parser.add_argument('-m', '--mac', dest='new_mac',
-                        help='Assign a MAC address to interface instead of a random one.')
+                        help='Assign a MAC address to interface instead of a randomly generated one.')
     args = parser.parse_args()
     if args.interface is None:
-        args.interface = input("Enter interface you wish to change > ")
+        args.interface = input('Enter interface you wish to change $ ')
+        if not args.interface:
+            parser.error('[-] Please specify an interface (ex. eth0, en1), use --help for more info.')
     if args.new_mac is None:
         args.new_mac = rand_mac()
     return args

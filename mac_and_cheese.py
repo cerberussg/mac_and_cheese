@@ -73,6 +73,7 @@ if sys.platform.startswith('darwin'):
     change_success(arguments.interface, arguments.new_mac)
 elif sys.platform.startswith('linux'):
     linux(arguments.interface, arguments.new_mac)
+    change_success(arguments.interface, arguments.new_mac)
 elif sys.platform.startswith('win32'):
     # TODO: Windows code
     pass

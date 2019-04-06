@@ -44,6 +44,8 @@ def linux(face, mac):
 
 
 interface = args.interface
+if interface is None:
+    interface = input("Enter interface you wish to change > ")
 new_mac = args.new_mac
 if new_mac is None:
     new_mac = rand_mac()

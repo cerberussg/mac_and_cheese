@@ -6,12 +6,19 @@ import sys
 from argparse import ArgumentParser
 from pyfiglet import Figlet
 
-parser = ArgumentParser(description='MAC spoofer written in Python')
-parser.add_argument('-i', '--interface', dest='interface', help='Interface adapter name to change MAC address on.')
-parser.add_argument('-m', '--mac', dest='new_mac', help='Assign a MAC address to interface instead of a random one.')
-args = parser.parse_args()
-custom_font = Figlet(font='doom')
-print(custom_font.renderText("Mac & Cheese"))
+
+def arguments():
+    parser = ArgumentParser(description='MAC spoofer written in Python 3')
+    parser.add_argument('-i', '--interface', dest='interface',
+                        help='Interface adapter name to change MAC address on. Example: en9 or eth0.')
+    parser.add_argument('-m', '--mac', dest='new_mac',
+                        help='Assign a MAC address to interface instead of a random one.')
+    args = parser.parse_args()
+    if args.interface is None:
+        args.interface = input("Enter interface you wish to change > ")
+    if args.new_mac is None:
+        args.new_mac = rand_mac()
+    return args
 
 
 def rand_mac():
@@ -43,18 +50,16 @@ def linux(face, mac):
     print(f'[+] Bringing network {face} up')
 
 
-interface = args.interface
-if interface is None:
-    interface = input("Enter interface you wish to change > ")
-new_mac = args.new_mac
-if new_mac is None:
-    new_mac = rand_mac()
+custom_font = Figlet(font='doom')
+print(custom_font.renderText("Mac & Cheese"))
 
+
+arguments = arguments()
 
 if sys.platform.startswith('darwin'):
-    darwin(interface, new_mac)
+    darwin(arguments.interface, arguments.new_mac)
 elif sys.platform.startswith('linux'):
-    linux(interface, new_mac)
+    linux(arguments.interface, arguments.new_mac)
 elif sys.platform.startswith('win32'):
     # TODO: Windows code
     pass

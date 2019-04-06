@@ -53,7 +53,6 @@ def linux(face, mac):
 custom_font = Figlet(font='doom')
 print(custom_font.renderText("Mac & Cheese"))
 
-
 arguments = arguments()
 
 if sys.platform.startswith('darwin'):

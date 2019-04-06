@@ -1,6 +1,6 @@
 # Mac & Cheese
 
-## Mac address changer
+## Mac address spoofer
 
 ### Compatible OS
 

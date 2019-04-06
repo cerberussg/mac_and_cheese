@@ -9,7 +9,7 @@ from pyfiglet import Figlet
 
 
 def arguments():
-    parser = ArgumentParser(description='MAC spoofer written in Python 3. Must have Admin access or Sudo capability')
+    parser = ArgumentParser(description='MAC spoofer written in Python 3. Must have admin access or sudo capability')
     parser.add_argument('-i', '--interface', dest='interface',
                         help='Interface adapter name to change MAC address: (ex. eth0, en1)')
     parser.add_argument('-m', '--mac', dest='new_mac',

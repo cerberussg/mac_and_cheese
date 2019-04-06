@@ -58,9 +58,9 @@ def change_success(face, mac):
     ether = ether.stdout.decode('utf-8')
     eth = re.search('(?:[0-9a-fA-F]:?){12}', ether)
     if eth.group(0) == mac:
-        print('[+] MAC address successfully changed.')
+        print('[+] MAC address successfully spoofed.')
     else:
-        print('[-] MAC address could not be changed successfully')
+        print('[-] MAC address failed to be spoofed.')
 
 
 custom_font = Figlet(font='doom')

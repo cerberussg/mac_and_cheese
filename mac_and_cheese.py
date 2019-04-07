@@ -44,17 +44,16 @@ def darwin(face, mac):
 
 
 def linux(face, mac):
-    print(f'[+] Bringing network {face} down')
-    subprocess.call(["sudo", "ifconfig", face, "down"])
-    subprocess.call(["sudo", "ifconfig", face, "ether", mac])
-    subprocess.call(["sudo", "ifconfig", face, "up"])
+    subprocess.call(["ifconfig", face, "down"])
+    subprocess.call(["ifconfig", face, "hw", "ether", mac])
+    subprocess.call(["ifconfig", face, "up"])
     print(f'[+] Changing MAC address for {face}')
     print(f'[+] Assigning MAC address: {mac}')
     print(f'[+] Bringing network {face} up')
 
 
 def change_success(face, mac):
-    ether = subprocess.run(["ifconfig", face, "ether"], stdout=subprocess.PIPE)
+    ether = subprocess.run(["ifconfig", face], stdout=subprocess.PIPE)
     ether = ether.stdout.decode('utf-8')
     eth = re.search('(?:[0-9a-fA-F]:?){12}', ether)
     if eth.group(0) == mac:

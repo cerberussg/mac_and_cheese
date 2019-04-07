@@ -13,10 +13,28 @@
 python3 mac_and_cheese.py -i en9
 ```
 
+```shell
+python3 mac_and_cheese.py --interface en9
+```
+
 ### Specify a specific MAC address on interface adapter en9
 
 ```shell
 python3 mac_and_cheese.py -i en9 -m 0c:bb:20:de:9c:0f
+```
+
+```shell
+python3 mac_and_cheese.py --interface en9 --mac 0c:bb:20:de:9c:0f
+```
+
+### Invoke help from the command line
+
+```shell
+python3 mac_and_cheese.py -h
+```
+
+```shell
+python3 mac_and_cheese.py --help
 ```
 
 ### Run the script from command line without arguments

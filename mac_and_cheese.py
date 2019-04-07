@@ -36,8 +36,8 @@ def rand_mac():
 
 
 def darwin(face, mac):
-    subprocess.call(["sudo", "ifconfig", face, "ether", mac])
-    subprocess.call(["sudo", "ifconfig", face, "up"])
+    subprocess.call(["ifconfig", face, "ether", mac])
+    subprocess.call(["ifconfig", face, "up"])
     print(f'[+] Changing MAC address for {face}')
     print(f'[+] Assigning MAC address: {mac}')
     print(f'[+] Bringing network {face} up')

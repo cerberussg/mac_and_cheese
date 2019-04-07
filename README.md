@@ -4,6 +4,7 @@
 
 - MAC spoofer written in Python 3. 
 - Must have admin access or sudo capability.
+- Multi platform.
 
 ## Usage
 

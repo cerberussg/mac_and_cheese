@@ -48,6 +48,11 @@ def linux(face, mac):
     change_message(face, mac)
 
 
+def win32(face, mac):
+    # TODO: Windows Code
+    pass
+
+
 def change_message(face, mac):
     print(f'[+] Changing MAC address for {face}')
     print(f'[+] Assigning MAC address: {mac}')
@@ -76,5 +81,5 @@ elif sys.platform.startswith('linux'):
     linux(arguments.interface, arguments.new_mac)
     change_success(arguments.interface, arguments.new_mac)
 elif sys.platform.startswith('win32'):
-    # TODO: Windows code
-    pass
+    win32(arguments.interface, arguments.new_mac)
+    change_success(arguments.interface, arguments.new_mac)

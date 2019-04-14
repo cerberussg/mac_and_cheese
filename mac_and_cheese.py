@@ -76,9 +76,6 @@ def change_success(face, mac):
         print('[-] MAC address failed to be spoofed.')
 
 
-custom_font = Figlet(font='doom')
-print(custom_font.renderText("MAC & Cheese"))
-
 arguments = arguments()
 
 if sys.platform.startswith('darwin'):

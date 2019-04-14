@@ -12,12 +12,12 @@ from pyfiglet import Figlet
 def arguments():
     parser = ArgumentParser(description='MAC spoofer written in Python 3. Must have admin access or sudo capability')
     parser.add_argument('-i', '--interface', dest='interface',
-                        help='Interface adapter name to change MAC address: (ex. eth0, en1)')
+                        help='Interface adapter name to spoof MAC address: (ex. eth0, en1)')
     parser.add_argument('-m', '--mac', dest='new_mac',
                         help='Assign a MAC address to interface instead of a randomly generated one.')
     args = parser.parse_args()
     if args.interface is None:
-        args.interface = input('Enter interface you wish to change $ ')
+        args.interface = input('Enter interface you wish to spoof $')
         if not args.interface:
             parser.error('[-] Please specify an interface (ex. eth0, en1), use --help for more info.')
     if args.new_mac is None:
@@ -26,6 +26,7 @@ def arguments():
 
 
 def admin_check():
+    # known good for MacOS, need to test Linux and Win32 will have its own.
     uid = os.getuid()
     if uid != 0:
         print('[-] Not and admin. Please run this command elevated using sudo.')
@@ -89,8 +90,8 @@ def spoof_outcome(face, mac):
         print('[-] MAC address failed to be spoofed.')
 
 
+admin_check()
 custom_font = Figlet(font='doom')
 print(custom_font.renderText("MAC & Cheese"))
-admin_check()
 arguments = arguments()
 spoof_attempt(arguments)

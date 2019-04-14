@@ -79,7 +79,7 @@ def change_success(face, mac):
 
 
 custom_font = Figlet(font='doom')
-print(custom_font.renderText("Mac & Cheese"))
+print(custom_font.renderText("MAC & Cheese"))
 
 arguments = arguments()
 

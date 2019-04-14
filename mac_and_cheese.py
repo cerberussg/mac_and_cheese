@@ -11,7 +11,7 @@ parser.add_argument('-i', '--interface', dest='interface', help='Interface adapt
 parser.add_argument('-m', '--mac', dest='new_mac', help='Assign a MAC address to interface instead of a random one.')
 args = parser.parse_args()
 custom_font = Figlet(font='doom')
-print(custom_font.renderText("Mac & Cheese"))
+print(custom_font.renderText("MAC & Cheese"))
 
 
 def rand_mac():

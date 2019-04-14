@@ -7,14 +7,13 @@ import re
 from argparse import ArgumentParser
 from pyfiglet import Figlet
 
-<<<<<<< HEAD
 parser = ArgumentParser(description='MAC spoofer written in Python')
 parser.add_argument('-i', '--interface', dest='interface', help='Interface adapter name to change MAC address on.')
 parser.add_argument('-m', '--mac', dest='new_mac', help='Assign a MAC address to interface instead of a random one.')
 args = parser.parse_args()
 custom_font = Figlet(font='doom')
 print(custom_font.renderText("MAC & Cheese"))
-=======
+
 
 def arguments():
     parser = ArgumentParser(description='MAC spoofer written in Python 3. Must have admin access or sudo capability')
@@ -30,7 +29,6 @@ def arguments():
     if args.new_mac is None:
         args.new_mac = rand_mac()
     return args
->>>>>>> f26c614747a5c7a7bd112ebe7f8af05bddb146fa
 
 
 def rand_mac():
